@@ -1,4 +1,4 @@
-.home-page{
+.home-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@
     object-fit: cover;
   }
 
-  &__title{
+  &__title {
     font-size: 2rem;
     color: #0056b3;
   }
@@ -35,6 +35,17 @@
       border-color: #0078d4;
       outline: none;
     }
+
+    &--error {
+      border-color: #d40000;
+      background-color: #ffefef;
+    }
+  }
+
+  &__error {
+    color: #d40000;
+    font-size: 0.875rem;
+    margin-top: -8px;
   }
 
   &__button {
@@ -49,6 +60,11 @@
 
     &:hover {
       background-color: #005ea6;
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
     }
   }
 }
