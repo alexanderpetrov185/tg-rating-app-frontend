@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./HomePage.scss";
+import {Bot} from "../types/bot";
+import {mockBots} from "../mocks/botMock";
 
 export default function HomePage() {
     const [inputValue, setInputValue] = useState<string>("");
     const [error, setError] = useState<string>("");
+    const [botList, setBotList] = useState<Bot[]>([]);
+
+    //заглушка, дефолтные значения бота
+    useEffect(()=> {
+        setBotList(mockBots)
+    }, [])
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let value = event.target.value.trim();
@@ -57,14 +65,25 @@ export default function HomePage() {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    className={`home-page__input ${error ? "home-page__input--error" : ""}`}
+                    className={`home-page__input ${!!error ? "error" : ""}`}
                     placeholder="@bot_name"
                 />
-                {error && <p className="home-page__error">{error}</p>}
+                <div className={`error-container ${!!error ? "visible" : "hide"}`}>
+                    <p className="error-message">Введите корректное имя бота (латиница, цифры, _)</p>
+                </div>
                 <button type="submit" className="home-page__button" disabled={!!error}>
                     Отправить
                 </button>
             </form>
+            <h2 className={"home-page__list-title"}>{!!inputValue?"Поиск:":"Популярные боты:"}</h2>
+            <div className="home-page__bot-list">
+                {botList.map((bot)=> (
+                    <div className="home-page__bot-list__item" key={bot.id}>
+                        <h3 className={"bot-title"}>{bot.name}</h3>
+                        <img src={bot.avatarUrl} alt={bot.name} className={"bot-Avatar"}/>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

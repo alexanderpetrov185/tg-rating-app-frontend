@@ -1,6 +1,45 @@
-body{
+/* Устанавливаем box-sizing для всех элементов */
+*, *::before, *::after {
   box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы и устанавливаем высоту для body */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: sans-serif; /* или другой шрифт по вашему выбору */
+  background-color: #fff; /* или другой цвет фона по вашему выбору */
+  color: #000; /* или другой цвет текста по вашему выбору */
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+/* Убираем стандартные стили для списков */
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+/* Устанавливаем базовые стили для заголовков */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/* Устанавливаем базовые стили для параграфов и других текстовых элементов */
+p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Упрощаем работу с изображениями */
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Наследуем шрифты для элементов формы */
+input, button, textarea, select {
+  font: inherit;
 }
