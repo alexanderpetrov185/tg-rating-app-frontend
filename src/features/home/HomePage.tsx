@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
-import "./HomePage.scss";
-import {Bot} from "../types/bot";
-import {mockBots} from "../mocks/botMock";
+import styles from "./HomePage.module.scss";
+import {Bot} from "../../types/bot";
+import {mockBots} from "../../mocks/botMock";
+import logo from "../../assets/logo.png"
 
 export default function HomePage() {
     const [inputValue, setInputValue] = useState<string>("");
@@ -24,12 +25,14 @@ export default function HomePage() {
 
         const botNameRaw = value.slice(1); // Убираем '@'
 
-        if (botNameRaw.length < 3) {
+
+        if (botNameRaw.length < 4) {
             setError("Введите минимум 3 символа для поиска");
-            return;
+        } else {
+            setError("");
         }
 
-        const botNameRegex = /^[a-zA-Z][a-zA-Z0-9_]{2,31}$/;
+        const botNameRegex = /^[a-zA-Z][a-zA-Z0-9_]{0,31}$/;
 
         if (!botNameRegex.test(botNameRaw)) {
             setError("Введите корректное имя бота (латиница, цифры, _)");
@@ -53,11 +56,11 @@ export default function HomePage() {
     };
 
     return (
-        <div className="home-page">
-            <img src="/assets/images/logo.png" alt="Логотип сервиса" className="home-page__logo" />
-            <h1 className="home-page__title">Народный рейтинг телеграм-ботов</h1>
-            <form className="home-page__form" onSubmit={handleSubmit}>
-                <label htmlFor="input" className="home-page__label">
+        <div className={styles.homePage}>
+            <img src={logo} alt="Логотип сервиса" className={styles.homePageLogo} />
+            <h1 className={styles.homePageTitle}>Народный рейтинг телеграм-ботов</h1>
+            <form className={styles.homePageForm} onSubmit={handleSubmit}>
+                <label htmlFor="input">
                     Введите название бота:
                 </label>
                 <input
@@ -65,22 +68,22 @@ export default function HomePage() {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    className={`home-page__input ${!!error ? "error" : ""}`}
+                    className={`${styles.homePageFormInput} ${!!error ? "error" : ""}`}
                     placeholder="@bot_name"
                 />
-                <div className={`error-container ${!!error ? "visible" : "hide"}`}>
-                    <p className="error-message">Введите корректное имя бота (латиница, цифры, _)</p>
+                <div className={`${styles.errorContainer + !!error ? "visible" : "hide"}`}>
+                    <p className={styles.errorMessage}>{error}</p>
                 </div>
-                <button type="submit" className="home-page__button" disabled={!!error}>
+                <button type="submit" className={styles.homePageButton} disabled={!!error}>
                     Отправить
                 </button>
             </form>
-            <h2 className={"home-page__list-title"}>{!!inputValue?"Поиск:":"Популярные боты:"}</h2>
-            <div className="home-page__bot-list">
+            <h2>{!!inputValue?"Поиск:":"Популярные боты:"}</h2>
+            <div className={styles.homePageBotList}>
                 {botList.map((bot)=> (
-                    <div className="home-page__bot-list__item" key={bot.id}>
-                        <h3 className={"bot-title"}>{bot.name}</h3>
-                        <img src={bot.avatarUrl} alt={bot.name} className={"bot-Avatar"}/>
+                    <div className={styles.homePageBotListItem} key={bot.id}>
+                        <h3>{bot.name}</h3>
+                        <img src={bot.avatarUrl} alt={bot.name} className={styles.botAvatar}/>
                     </div>
                 ))}
             </div>

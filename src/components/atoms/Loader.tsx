@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import "./Loader.scss";
+import "./Loader.module.scss";
 
 type LoaderProps = {
     size?: number; // Размер спиннера в пикселях

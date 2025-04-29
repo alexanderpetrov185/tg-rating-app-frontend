@@ -1,0 +1,125 @@
+@use "../../styles/abstracts/mixins" as *;
+
+// Контейнер страницы
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  max-width: 50vw;
+  background-color: aliceblue;
+}
+
+// Логотип
+.homePageLogo {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+// Заголовок
+.homePageTitle {
+  font-size: 2rem;
+  color: #0056b3;
+}
+
+// Форма поиска
+.homePageForm {
+  display: flex;
+  flex-direction: column;
+}
+
+// Инпут внутри формы
+.homePageFormInput {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: #0078d4;
+    outline: none;
+  }
+
+  &.error {
+    border-color: #d40000;
+    background-color: #ffefef;
+  }
+}
+
+// Контейнер для сообщений об ошибке
+.errorContainer {
+  // Перенесли height до вложенных правил
+  height: 1.25rem;
+
+  @include fadeIn;
+  @include fadeOut;
+
+  .errorMessage {
+    color: #d40000;
+    font-size: 0.875rem;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  &.visible {
+    .errorMessage {
+      opacity: 1;
+      height: auto;
+      animation: fadeIn 0.3s ease forwards;
+    }
+  }
+
+  &.hide {
+    .errorMessage {
+      opacity: 0;
+      height: 0;
+      animation: fadeOut 0.3s ease forwards;
+    }
+  }
+}
+
+// Кнопка отправки
+.homePageButton {
+  padding: 8px 12px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #0078d4;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #005ea6;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+// Заголовок списка ботов
+.homePageListTitle {
+  align-self: center;
+}
+
+// Контейнер списка ботов
+.homePageBotList {
+  background: #ffefef;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+// Элемент списка бота
+.homePageBotListItem {
+  .botAvatar {
+    object-fit: cover;
+    border-radius: 50%;
+    max-width: 150px;
+    height: auto;
+  }
+}
