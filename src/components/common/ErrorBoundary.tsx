@@ -28,12 +28,12 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
         if (this.state.hasError) {
             return (
                 <div className={styles.errorBoundary}>
-                    <h1 className={styles.errorBoundaryTitle}>Something went wrong 😓</h1>
-                    <p className={styles.errorBoundaryDescription}>
+                    <h1 className={styles.title}>Something went wrong 😓</h1>
+                    <p className={styles.description}>
                         Please try reloading the page.
                     </p>
                     <button
-                        className={styles.errorBoundaryButton}
+                        className={styles.button}
                         onClick={this.handleReload}
                     >
                         Reload

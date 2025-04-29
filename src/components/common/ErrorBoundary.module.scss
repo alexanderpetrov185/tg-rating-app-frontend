@@ -9,28 +9,28 @@
   color: #333;
   font-family: sans-serif;
 
-  &Title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+  &:hover {
+    background-color: #0056b3;
   }
+}
 
-  &Description {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-  }
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
-  &Button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
 
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
+.button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }

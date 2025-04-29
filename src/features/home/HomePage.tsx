@@ -57,9 +57,9 @@ export default function HomePage() {
 
     return (
         <div className={styles.homePage}>
-            <img src={logo} alt="Логотип сервиса" className={styles.homePageLogo} />
-            <h1 className={styles.homePageTitle}>Народный рейтинг телеграм-ботов</h1>
-            <form className={styles.homePageForm} onSubmit={handleSubmit}>
+            <img src={logo} alt="Логотип сервиса" className={styles.logo} />
+            <h1 className={styles.title}>Народный рейтинг телеграм-ботов</h1>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <label htmlFor="input">
                     Введите название бота:
                 </label>
@@ -68,20 +68,20 @@ export default function HomePage() {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    className={`${styles.homePageFormInput} ${!!error ? "error" : ""}`}
+                    className={`${styles.input} ${!!error ? "error" : ""}`}
                     placeholder="@bot_name"
                 />
-                <div className={`${styles.errorContainer + !!error ? "visible" : "hide"}`}>
+                <div className={`${styles.errorContainer} ${!!error ? styles.errorContainerVisible : styles.errorContainerHide}`}>
                     <p className={styles.errorMessage}>{error}</p>
                 </div>
-                <button type="submit" className={styles.homePageButton} disabled={!!error}>
+                <button type="submit" className={styles.button} disabled={!!error}>
                     Отправить
                 </button>
             </form>
-            <h2>{!!inputValue?"Поиск:":"Популярные боты:"}</h2>
-            <div className={styles.homePageBotList}>
+            <h2 className={styles.botListTitle}>{!!inputValue?"Поиск:":"Популярные боты:"}</h2>
+            <div className={styles.botListContainer}>
                 {botList.map((bot)=> (
-                    <div className={styles.homePageBotListItem} key={bot.id}>
+                    <div className={styles.botListItem} key={bot.id}>
                         <h3>{bot.name}</h3>
                         <img src={bot.avatarUrl} alt={bot.name} className={styles.botAvatar}/>
                     </div>

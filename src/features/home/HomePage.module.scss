@@ -1,6 +1,5 @@
 @use "../../styles/abstracts/mixins" as *;
 
-// Контейнер страницы
 .homePage {
   display: flex;
   flex-direction: column;
@@ -8,29 +7,27 @@
   min-height: 100vh;
   max-width: 50vw;
   background-color: aliceblue;
+  padding: 15px;
 }
 
-// Логотип
-.homePageLogo {
+.logo {
   width: 150px;
   height: 150px;
   object-fit: cover;
 }
 
-// Заголовок
-.homePageTitle {
+.title {
   font-size: 2rem;
   color: #0056b3;
 }
 
-// Форма поиска
-.homePageForm {
+.form {
   display: flex;
   flex-direction: column;
+  width: 90%;
 }
 
-// Инпут внутри формы
-.homePageFormInput {
+.input {
   padding: 8px 12px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -41,47 +38,46 @@
     border-color: #0078d4;
     outline: none;
   }
-
-  &.error {
-    border-color: #d40000;
-    background-color: #ffefef;
-  }
 }
 
-// Контейнер для сообщений об ошибке
-.errorContainer {
-  // Перенесли height до вложенных правил
-  height: 1.25rem;
+.inputError {
+  composes: input;
 
+  border-color: #d40000;
+  background-color: #ffefef;
+}
+
+.errorContainer {
+  min-height: 1.25rem;
   @include fadeIn;
   @include fadeOut;
-
-  .errorMessage {
-    color: #d40000;
-    font-size: 0.875rem;
-    transition: opacity 0.3s ease;
-    opacity: 0;
-  }
-
-  &.visible {
-    .errorMessage {
-      opacity: 1;
-      height: auto;
-      animation: fadeIn 0.3s ease forwards;
-    }
-  }
-
-  &.hide {
-    .errorMessage {
-      opacity: 0;
-      height: 0;
-      animation: fadeOut 0.3s ease forwards;
-    }
-  }
 }
 
-// Кнопка отправки
-.homePageButton {
+.errorContainerVisible {
+  composes: errorContainer;
+
+  opacity: 1;
+  height: auto;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.errorContainerHide {
+  composes: errorContainer;
+
+  opacity: 0;
+  height: 0;
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.errorMessage {
+  color: #d40000;
+  font-size: 0.875rem;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+
+.button {
   padding: 8px 12px;
   font-size: 1rem;
   color: #fff;
@@ -101,25 +97,24 @@
   }
 }
 
-// Заголовок списка ботов
-.homePageListTitle {
+.botListTitle {
   align-self: center;
 }
 
-// Контейнер списка ботов
-.homePageBotList {
+.botListContainer {
   background: #ffefef;
   display: flex;
   flex-direction: row;
   text-align: center;
 }
 
-// Элемент списка бота
-.homePageBotListItem {
-  .botAvatar {
-    object-fit: cover;
-    border-radius: 50%;
-    max-width: 150px;
-    height: auto;
-  }
+.botListItem {
+
+}
+
+.botAvatar {
+  object-fit: cover;
+  border-radius: 50%;
+  max-width: 150px;
+  height: auto;
 }
