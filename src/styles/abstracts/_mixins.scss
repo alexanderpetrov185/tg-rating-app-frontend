@@ -1,17 +1,23 @@
-@mixin fadeIn {
+// abstracts/mixins.scss
+@mixin fadeIn($duration: 0.3s, $distance: -10px) {
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: translateY($distance);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
+  // Обернули в & {} для соответствия новым правилам
+  & {
+    animation: fadeIn $duration ease forwards;
+  }
 }
 
-@mixin fadeOut {
+@mixin fadeOut($duration: 0.3s, $distance: -10px) {
   @keyframes fadeOut {
     from {
       opacity: 1;
@@ -19,7 +25,12 @@
     }
     to {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: translateY($distance);
     }
+  }
+
+  // Обернули в & {} для соответствия новым правилам
+  & {
+    animation: fadeOut $duration ease forwards;
   }
 }

@@ -25,11 +25,9 @@ export default function HomePage() {
 
         const botNameRaw = value.slice(1); // Убираем '@'
 
-
         if (botNameRaw.length < 4) {
             setError("Введите минимум 3 символа для поиска");
-        } else {
-            setError("");
+            return;
         }
 
         const botNameRegex = /^[a-zA-Z][a-zA-Z0-9_]{0,31}$/;

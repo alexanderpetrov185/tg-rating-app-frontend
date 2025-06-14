@@ -49,31 +49,25 @@
 
 .errorContainer {
   min-height: 1.25rem;
-  @include fadeIn;
-  @include fadeOut;
+  height: auto;
+  overflow: hidden;
 }
 
 .errorContainerVisible {
   composes: errorContainer;
 
-  opacity: 1;
-  height: auto;
-  animation: fadeIn 0.3s ease forwards;
+  @include fadeIn;
 }
 
 .errorContainerHide {
   composes: errorContainer;
 
-  opacity: 0;
-  height: 0;
-  animation: fadeOut 0.3s ease forwards;
+  @include fadeOut;
 }
 
 .errorMessage {
   color: #d40000;
   font-size: 0.875rem;
-  transition: opacity 0.3s ease;
-  opacity: 0;
 }
 
 
