@@ -17,21 +17,21 @@ export default function HomePage() {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let value = event.target.value.trim();
 
+        // Автодобавление @
         if (value && !value.startsWith("@")) {
             value = "@" + value;
         }
 
         setInputValue(value);
-
         const botNameRaw = value.slice(1); // Убираем '@'
 
+        // Валидация
         if (botNameRaw.length < 4) {
             setError("Введите минимум 3 символа для поиска");
             return;
         }
 
         const botNameRegex = /^[a-zA-Z][a-zA-Z0-9_]{0,31}$/;
-
         if (!botNameRegex.test(botNameRaw)) {
             setError("Введите корректное имя бота (латиница, цифры, _)");
         } else {
