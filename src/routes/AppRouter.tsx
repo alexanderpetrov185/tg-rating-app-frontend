@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
 import { routesConfig } from "./routesConfig";
-import Loader from "../components/atoms/Loader";
+import Loader from "../components/atoms/Loader/Loader";
 
 export const AppRouter = () => {
     return (

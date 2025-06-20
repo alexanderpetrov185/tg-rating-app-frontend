@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
 import styles from "./HomePage.module.scss";
-import {Bot} from "../../types/bot";
+import {BotTypes} from "../../types/bot";
 import {mockBots} from "../../mocks/botMock";
+import BotCard from "../../components/molecules/BotCard/BotCard"
 import logo from "../../assets/logo.png"
 
 export default function HomePage() {
     const [inputValue, setInputValue] = useState<string>("");
     const [error, setError] = useState<string>("");
-    const [botList, setBotList] = useState<Bot[]>([]);
+    const [botList, setBotList] = useState<BotTypes[]>([]);
 
     //заглушка, дефолтные значения бота
     useEffect(()=> {
@@ -79,10 +80,7 @@ export default function HomePage() {
             <h2 className={styles.botListTitle}>{!!inputValue?"Поиск:":"Популярные боты:"}</h2>
             <div className={styles.botListContainer}>
                 {botList.map((bot)=> (
-                    <div className={styles.botListItem} key={bot.id}>
-                        <h3>{bot.name}</h3>
-                        <img src={bot.avatarUrl} alt={bot.name} className={styles.botAvatar}/>
-                    </div>
+                    <BotCard bot={bot} key={bot.id}/>
                 ))}
             </div>
         </div>
