@@ -1,0 +1,24 @@
+@use "../../../styles/abstracts/_mixins.scss" as *;
+
+.errorContainer {
+  min-height: 1.25rem;
+  height: auto;
+  overflow: hidden;
+}
+
+.errorContainerVisible {
+  composes: errorContainer;
+
+  @include fadeIn;
+}
+
+.errorContainerHide {
+  composes: errorContainer;
+
+  @include fadeOut; //АНИМАЦИЯ АУТА НЕ РАБОТАЕТ, ПРОВЕРИТЬ
+}
+
+.errorMessage {
+  color: #d40000;
+  font-size: 0.875rem;
+}

@@ -4,6 +4,7 @@ import {BotTypes} from "../../types/bot";
 import {mockBots} from "../../mocks/botMock";
 import BotCard from "../../components/molecules/BotCard/BotCard"
 import logo from "../../assets/logo.png"
+import ValidationError from "../../components/atoms/ValidationError/ValidationError";
 
 export default function HomePage() {
     const [inputValue, setInputValue] = useState<string>("");
@@ -67,12 +68,10 @@ export default function HomePage() {
                     type="text"
                     value={inputValue}
                     onChange={handleInputChange}
-                    className={`${styles.input} ${!!error ? "error" : ""}`}
+                    className={`${styles.input} ${error && styles.inputError}`}
                     placeholder="@bot_name"
                 />
-                <div className={`${styles.errorContainer} ${!!error ? styles.errorContainerVisible : styles.errorContainerHide}`}>
-                    <p className={styles.errorMessage}>{error}</p>
-                </div>
+                <ValidationError error={error} visible={!!error}/>
                 <button type="submit" className={styles.button} disabled={!!error}>
                     Отправить
                 </button>
