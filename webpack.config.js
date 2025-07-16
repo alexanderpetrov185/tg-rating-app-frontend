@@ -63,12 +63,36 @@ module.exports = {
                 generator: {
                     filename: 'static/images/[hash][ext][query]'
                 }
+            },
+            // svg
+            {
+                test: /\.svg$/i,
+                issuer: /\.[jt]sx?$/,
+                use: [
+                    {
+                        loader: '@svgr/webpack',
+                        options: {
+                            svgoConfig: {
+                                plugins: [
+                                    {
+                                        name: 'preset-default',
+                                        params: {
+                                            overrides: {
+                                                removeViewBox: false
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                ]
             }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({ template: './public/index.html', favicon: './public/assets/favicon.ico' }),
         new CleanWebpackPlugin(),
-        new Dotenv()
+        new Dotenv(),
     ]
 };
