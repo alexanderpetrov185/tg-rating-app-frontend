@@ -1,50 +1,47 @@
-/* styles/global.scss */
-
-/* Box-sizing для всех */
-*, *::before, *::after {
+/* reset.css */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Базовые стили для body */
+/* Удерживаем мобильный шрифт */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Окно прокрутки */
 body {
-  margin: 0;
-  padding: 0;
+  line-height: 1;
   min-height: 100vh;
-  line-height: 1.5;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-  background-color: #fff;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  background: #fff;
   color: #000;
-  display: flex;
-  justify-content: center;
 }
 
-/* Сброс списков */
-ul[role='list'], ol[role='list'] {
+/* Убираем точки и цифры у списков */
+ul,
+ol {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
-/* Сброс заголовков */
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+/* Сброс для заголовков и параграфов */
+h1, h2, h3, h4, h5, h6, p {
   font-size: inherit;
   font-weight: inherit;
 }
 
-/* Сброс текста */
-p, figure, blockquote, dl, dd {
-  margin: 0;
-}
-
-/* Стили для изображений */
-img, picture {
-  max-width: 100%;
+/* Картинки и медиа */
+img, picture, video, canvas, svg {
   display: block;
+  max-width: 100%;
 }
 
-/* Наследование шрифта для форм */
+/* Формы */
 input, button, textarea, select {
   font: inherit;
-  outline: none;
 }

@@ -6,14 +6,16 @@
   max-width: min(90vw, 1200px);
   margin: 0 auto;
   background-color: aliceblue;
-  padding: 20px;
+  padding: 1rem;
   box-sizing: border-box;
 }
 
 .logo {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
+  width: 9rem;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .title {
@@ -75,8 +77,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 1rem;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 1rem;
   background: transparent;
 }
